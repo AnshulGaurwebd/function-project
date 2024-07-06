@@ -1,5 +1,6 @@
 # MetroTicketBooking
 this is simple Metro ticket booking contract written in solidity
+
 **Discription:**
 The MetroTicketBooking Solidity contract allows users to purchase and manage metro tickets on the Ethereum blockchain. It has state variables to store the owner's address, the ticket price, the total number of tickets available, and a mapping to track the number of tickets owned by each user. The constructor initializes the contract with a specified ticket price and total number of tickets, setting the deployer as the owner. The contract provides several functions: buyTicket, which lets users buy tickets while ensuring the correct Ether amount is sent and that enough tickets are available; getTicketCount, which returns the number of tickets a user owns; cancelTicket, which allows users to cancel tickets and get a refund; and checkBalance, which returns the contract's Ether balance.
 
