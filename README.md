@@ -102,6 +102,7 @@ Canceling Tickets:
 
 Enter the number of tickets to cancel in the count field of the cancelTicket function.
 Click on the cancelTicket button to execute the transaction.
+
 Checking Contract Balance:
 
 Click on the checkBalance function to see the current balance of the contract.
