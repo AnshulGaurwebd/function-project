@@ -113,7 +113,7 @@ For any issues or common problems related to this contract, refer Solidity docum
 
 ## Authors
 
-Srijan Kumar <br> [@anshulgaur](anshulgaur003@gmail.com)
+Anshul Gaur <br> [@anshulgaur](anshulgaur003@gmail.com)
 
 ## License
 
