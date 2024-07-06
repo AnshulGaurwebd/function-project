@@ -1,0 +1,52 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MetroTicketBooking {
+    address public owner;
+    uint256 public ticketPrice;
+    uint256 public totalTickets;
+    mapping(address => uint256) public tickets;
+
+    constructor(uint256 _ticketPrice, uint256 _totalTickets) {
+        owner = msg.sender;
+        ticketPrice = _ticketPrice;
+        totalTickets = _totalTickets;
+    }
+
+  // Function to buy a ticket
+    function buyTicket(uint256 count) public payable {
+        if (count <= 0) {
+            revert("You must buy at least one ticket.");
+        }
+        if (msg.value != ticketPrice * count) {
+            revert("Incorrect amount of Ether sent.");
+        }
+        if (totalTickets < count) {
+            revert("Not enough tickets available.");
+        }
+
+        tickets[msg.sender] += count;
+        totalTickets -= count;
+    }
+
+    // Function to get the number of tickets owned by a user
+    function getTicketCount() public view returns (uint256) {
+        return tickets[msg.sender];
+    }
+
+    // Function to cancel tickets
+    function cancelTicket(uint256 count) public {
+        require(count > 0, "You must cancel at least one ticket.");
+        require(tickets[msg.sender] >= count, "You do not have enough tickets to cancel.");
+
+        tickets[msg.sender] -= count;
+        totalTickets += count;
+        payable(msg.sender).transfer(ticketPrice * count);
+    }
+
+    // Function to check the balance of the contract
+    function checkBalance() public view returns (uint256) {
+        assert(address(this).balance >= 0);
+        return address(this).balance;
+    }
+}
